@@ -1,0 +1,67 @@
+{
+  "name": "react-password-with-generator",
+  "version": "0.0.1",
+  "description": "An password input with a configurable generator.",
+  "main": "dist/component/index.js",
+  "style": "src/style.css",
+  "scripts": {
+    "prepublish": "npm run build && cp -rv dist/docs/* docs/",
+    "build-component": "babel src/component --out-dir dist/component",
+    "build-docs": "webpack",
+    "build": "npm run build-component && npm run build-docs",
+    "test": "nyc mocha --require babel-register --require spec/setup.js spec/**/*.spec.js",
+    "test-dev": "nyc mocha --watch --require babel-register --require spec/setup.js spec/**/*.spec.js",
+    "lint": "eslint .; exit 0",
+    "dev": "webpack-dev-server"
+  },
+  "keywords": [
+    "password",
+    "password-generator",
+    "component",
+    "react",
+    "react-component"
+  ],
+  "author": "Luís Nóbrega <luis.barros.nobrega@gmail.com>",
+  "homepage": "https://github.com/lfbn/react-password-with-generator",
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:lfbn/react-password-with-generator.git"
+  },
+  "bugs": {
+    "url": "https://github.com/lfbn/react-password-with-generator/issues"
+  },
+  "license": "MIT",
+  "devDependencies": {
+    "babel-cli": "^6.14.0",
+    "babel-core": "^6.14.0",
+    "babel-loader": "^6.2.5",
+    "babel-plugin-transform-object-rest-spread": "^6.16.0",
+    "babel-preset-es2015": "^6.14.0",
+    "babel-preset-react": "^6.11.1",
+    "babel-register": "^6.16.3",
+    "chai": "^3.5.0",
+    "chai-enzyme": "^0.5.2",
+    "copy-webpack-plugin": "^3.0.1",
+    "css-loader": "^0.25.0",
+    "enzyme": "^2.4.1",
+    "eslint": "^3.7.1",
+    "eslint-config-standard": "^6.2.0",
+    "eslint-config-standard-react": "^4.2.0",
+    "eslint-plugin-promise": "^3.3.0",
+    "eslint-plugin-react": "^6.3.0",
+    "eslint-plugin-standard": "^2.0.1",
+    "jsdom": "^9.6.0",
+    "mocha": "^3.1.2",
+    "nyc": "^11.0.2",
+    "react": "^15.6.1",
+    "react-dom": "^15.6.1",
+    "style-loader": "^0.13.1",
+    "webpack": "^1.13.2",
+    "webpack-dev-server": "^1.16.0",
+    "prop-types": "^15.3.0"
+  },
+  "dependencies": {
+    "classnames": "^2.2.5",
+    "password-generator": "^2.2.0"
+  }
+}
