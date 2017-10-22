@@ -61,7 +61,7 @@ class InputPasswordGenerator extends PureComponent {
   }
 
   render () {
-    const { className } = this.props
+    const { className, ...inputProps } = this.props
     const classes = classNames('react-password-generator', {
       'react-password-generator--focus': this.state.hasFocus,
     }, className)
@@ -69,6 +69,7 @@ class InputPasswordGenerator extends PureComponent {
     return (
       <div className={classes}>
         <input
+          {...inputProps}
           className={'react-password-generator__input'}
           ref={ref => { this.input = ref }}
           onFocus={this.handleOnFocus}
@@ -105,14 +106,14 @@ InputPasswordGenerator.propTypes = {
   onFocus: PropTypes.func,
   onBlur: PropTypes.func,
   className: PropTypes.string,
-  passwordCustomLength: PropTypes.number,
-  passwordNotMemorable: PropTypes.bool,
-  passwordShouldMatchPattern: PropTypes.string,
-  passwordPrefix: PropTypes.string,
   messages: PropTypes.shape({
     inputPlaceholder: PropTypes.string,
     generateButtonLabel: PropTypes.string,
   }),
+  passwordCustomLength: PropTypes.number,
+  passwordNotMemorable: PropTypes.bool,
+  passwordShouldMatchPattern: PropTypes.string,
+  passwordPrefix: PropTypes.string,
 }
 
 export default InputPasswordGenerator
