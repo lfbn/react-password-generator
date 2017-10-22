@@ -4,11 +4,16 @@ An password input with a configurable generator.
 
 The component takes the following props.
 
-| Prop       | Type       | Description  |
-|------------|------------|--------------|
-| `onFocus`  | _function_ | Callback function to invoke when the input password field has focus. The function signature should be the following: `function(e) { }`. |
-| `onBlur`   | _function_ | Callback function to invoke when field loses focus. The function signature should be the following: `function(e) { }`. |
-| `messages` | _object_   | You could define the string messages to be shown for `messages={{inputPlaceholder: 'Define the password', generateButtonLabel: 'Generate one!'}}` |
+| Prop         | Type       | Description  |
+|--------------|------------|--------------|
+| `onFocus`    | _function_ | Callback function to invoke when the input password field has focus. The function signature should be the following: `function(e) { }`. |
+| `onBlur`     | _function_ | Callback function to invoke when field loses focus. The function signature should be the following: `function(e) { }`. |
+| `className`  | _string_   | Class name to be added to the wrapper div |
+| `messages`   | _object_   | You could define the string messages to be shown for `messages={{inputPlaceholder: 'Define the password', generateButtonLabel: 'Generate one!'}}` |
+| `passwordCustomLength` | _integer_ | The length of the password to be generated |
+| `passwordNotMemorable` | _boolean_ | If the password generated should be memorable. Default is false. |
+| `passwordShouldMatchPattern` | _string_ | The pattern to match for the generated password |
+| `passwordPrefix` | _string_ | Customize the generated password prefix |
 
 # Installation
 
