@@ -1,6 +1,6 @@
 {
   "name": "react-password-with-generator",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "An password input with a configurable generator.",
   "main": "dist/component/index.js",
   "style": "src/style.css",

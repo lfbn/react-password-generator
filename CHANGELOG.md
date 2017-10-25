@@ -9,6 +9,10 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 ### Added
 - Add a second input to "confirm" the password.
 
+## [1.0.4] - 2017/10/25
+### Changed
+- Add demo URL to readme file.
+
 ## [1.0.3] - 2017/10/22
 ### Changed
 - Refactored this changelog.

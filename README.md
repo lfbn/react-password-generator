@@ -21,9 +21,13 @@ The component takes the following props.
 npm install react-password-with-generator
 ```
 
+# Demo
+
+You have a demo [here](https://lfbn.github.io/react-password-with-generator/).
+
 # Usage
 
-If you want the default styling include the components' [CSS](./style.css) with
+If you want the default styling include the components [CSS](./style.css) with
 
 ```javascript
 import "react-password-with-generator/style.css" // for ES6 modules
