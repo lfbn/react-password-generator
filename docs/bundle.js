@@ -75,15 +75,20 @@
 	var App = function (_Component) {
 	  _inherits(App, _Component);
 	
-	  function App(props) {
+	  function App() {
 	    _classCallCheck(this, App);
 	
-	    return _possibleConstructorReturn(this, (App.__proto__ || Object.getPrototypeOf(App)).call(this, props));
+	    return _possibleConstructorReturn(this, (App.__proto__ || Object.getPrototypeOf(App)).apply(this, arguments));
 	  }
 	
 	  _createClass(App, [{
 	    key: 'render',
 	    value: function render() {
+	      var messages = {
+	        inputPlaceholder: 'This is a custom input placeholder',
+	        generateButtonLabel: 'This a custom button label'
+	      };
+	
 	      return _react2.default.createElement(
 	        'form',
 	        null,
@@ -93,9 +98,69 @@
 	          'react-input-password-generator'
 	        ),
 	        _react2.default.createElement(
+	          'h2',
+	          null,
+	          'Simple Example'
+	        ),
+	        _react2.default.createElement(
 	          'div',
 	          { className: 'example' },
 	          _react2.default.createElement(_component2.default, null)
+	        ),
+	        _react2.default.createElement('hr', null),
+	        _react2.default.createElement(
+	          'h2',
+	          null,
+	          'Example with a custom length password'
+	        ),
+	        _react2.default.createElement(
+	          'div',
+	          { className: 'example' },
+	          _react2.default.createElement(_component2.default, { password: { password: { 'customLength': 15 } } })
+	        ),
+	        _react2.default.createElement('hr', null),
+	        _react2.default.createElement(
+	          'h2',
+	          null,
+	          'Example with a not memorable password'
+	        ),
+	        _react2.default.createElement(
+	          'div',
+	          { className: 'example' },
+	          _react2.default.createElement(_component2.default, { password: { password: { 'notMemorable': false } } })
+	        ),
+	        _react2.default.createElement('hr', null),
+	        _react2.default.createElement(
+	          'h2',
+	          null,
+	          'Example with a custom Class Name'
+	        ),
+	        _react2.default.createElement(
+	          'div',
+	          { className: 'example' },
+	          _react2.default.createElement(_component2.default, { className: 'red' })
+	        ),
+	        _react2.default.createElement('hr', null),
+	        _react2.default.createElement(
+	          'h2',
+	          null,
+	          'Example with a custom Class Name'
+	        ),
+	        _react2.default.createElement(
+	          'div',
+	          { className: 'example' },
+	          _react2.default.createElement(_component2.default, { className: 'red' })
+	        ),
+	        _react2.default.createElement('hr', null),
+	        _react2.default.createElement(
+	          'h2',
+	          null,
+	          'Example with a custom button label or input placeholder'
+	        ),
+	        _react2.default.createElement(
+	          'div',
+	          { className: 'example' },
+	          _react2.default.createElement(_component2.default, { messages: true })
 	        )
 	      );
 	    }
@@ -22480,6 +22545,8 @@
 	  value: true
 	});
 	
+	var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+	
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 	
 	var _react = __webpack_require__(1);
@@ -22499,6 +22566,8 @@
 	var _passwordGenerator2 = _interopRequireDefault(_passwordGenerator);
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+	
+	function _objectWithoutProperties(obj, keys) { var target = {}; for (var i in obj) { if (keys.indexOf(i) >= 0) continue; if (!Object.prototype.hasOwnProperty.call(obj, i)) continue; target[i] = obj[i]; } return target; }
 	
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 	
@@ -22553,13 +22622,10 @@
 	      });
 	    }
 	  }, {
-	    key: 'getLabel',
-	    value: function getLabel(key) {
+	    key: 'getMessage',
+	    value: function getMessage(key) {
 	      var messages = this.props.messages;
 	
-	      if (!messages) {
-	        return null;
-	      }
 	      return messages[key] === undefined ? InputPasswordGenerator.defaultProps.messages[key] : messages[key];
 	    }
 	  }, {
@@ -22567,7 +22633,7 @@
 	    value: function handleGenerateOnClick() {
 	      var _this2 = this;
 	
-	      var generatedPassword = (0, _passwordGenerator2.default)(this.props.passwordCustomLength, this.props.passwordNotMemorable, this.props.passwordShouldMatchPattern, this.props.passwordPrefix);
+	      var generatedPassword = (0, _passwordGenerator2.default)(this.props.password.customLength, this.props.password.notMemorable, this.props.password.shouldMatchPattern, this.props.password.prefix);
 	
 	      this.setState({
 	        password: generatedPassword,
@@ -22581,7 +22647,11 @@
 	    value: function render() {
 	      var _this3 = this;
 	
-	      var className = this.props.className;
+	      var _props = this.props,
+	          className = _props.className,
+	          messages = _props.messages,
+	          password = _props.password,
+	          inputProps = _objectWithoutProperties(_props, ['className', 'messages', 'password']);
 	
 	      var classes = (0, _classnames2.default)('react-password-generator', {
 	        'react-password-generator--focus': this.state.hasFocus
@@ -22590,7 +22660,7 @@
 	      return _react2.default.createElement(
 	        'div',
 	        { className: classes },
-	        _react2.default.createElement('input', {
+	        _react2.default.createElement('input', _extends({}, inputProps, {
 	          className: 'react-password-generator__input',
 	          ref: function ref(_ref) {
 	            _this3.input = _ref;
@@ -22598,15 +22668,15 @@
 	          onFocus: this.handleOnFocus,
 	          onBlur: this.handleOnBlur,
 	          value: this.state.password,
-	          placeholder: this.getLabel('inputPlaceholder'),
-	          type: this.state.passwordInputType }),
+	          placeholder: this.getMessage('inputPlaceholder'),
+	          type: this.state.passwordInputType })),
 	        _react2.default.createElement(
 	          'button',
 	          {
 	            className: 'react-password-generator__button',
 	            onClick: this.handleGenerateOnClick,
 	            type: 'button' },
-	          this.getLabel('generateButtonLabel')
+	          this.getMessage('generateButtonLabel')
 	        )
 	      );
 	    }
@@ -22619,13 +22689,15 @@
 	
 	InputPasswordGenerator.defaultProps = {
 	  className: '',
-	  passwordCustomLength: 10,
-	  passwordNotMemorable: true,
-	  passwordShouldMatchPattern: null,
-	  passwordPrefix: null,
 	  messages: {
 	    inputPlaceholder: 'Password',
 	    generateButtonLabel: 'Generate'
+	  },
+	  password: {
+	    customLength: 10,
+	    notMemorable: true,
+	    shouldMatchPattern: null,
+	    prefix: null
 	  }
 	};
 	
@@ -22633,13 +22705,15 @@
 	  onFocus: _propTypes2.default.func,
 	  onBlur: _propTypes2.default.func,
 	  className: _propTypes2.default.string,
-	  passwordCustomLength: _propTypes2.default.number,
-	  passwordNotMemorable: _propTypes2.default.bool,
-	  passwordShouldMatchPattern: _propTypes2.default.string,
-	  passwordPrefix: _propTypes2.default.string,
 	  messages: _propTypes2.default.shape({
 	    inputPlaceholder: _propTypes2.default.string,
 	    generateButtonLabel: _propTypes2.default.string
+	  }),
+	  password: _propTypes2.default.shape({
+	    customLength: _propTypes2.default.number,
+	    notMemorable: _propTypes2.default.bool,
+	    shouldMatchPattern: _propTypes2.default.string,
+	    prefix: _propTypes2.default.string
 	  })
 	};
 	
@@ -31816,7 +31890,7 @@
 	
 	
 	// module
-	exports.push([module.id, "", ""]);
+	exports.push([module.id, ".red {\n  background-color: red;\n}", ""]);
 	
 	// exports
 
