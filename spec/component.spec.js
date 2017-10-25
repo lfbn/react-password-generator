@@ -37,6 +37,16 @@ describe('Component', () => {
     expect(wrapper.hasClass(className)).to.be.true
   })
 
+  it('adds a classname to wrapper when on focus', () => {
+    wrapper = mount(
+      <PasswordGenerator />
+    )
+
+    const input = findRenderedDOMComponentWithTag(wrapper.node, 'input')
+    Simulate.focus(input)
+    expect(wrapper.hasClass('react-password-generator--focus')).to.equal(true)
+  })
+
   it('accepts custom messages', () => {
     wrapper = shallow(
       <PasswordGenerator messages={messages} />
@@ -44,6 +54,15 @@ describe('Component', () => {
 
     expect(wrapper.find('[placeholder="' + messages.inputPlaceholder + '"]')).to.have.length(1)
     expect(wrapper.find('.react-password-generator__button').text()).to.equal(messages.generateButtonLabel)
+  })
+
+  it('should use default message if no custom provided', () => {
+    wrapper = shallow(
+      <PasswordGenerator />
+    )
+
+    expect(wrapper.find('[placeholder="Password"]')).to.have.length(1)
+    expect(wrapper.find('.react-password-generator__button').text()).to.equal('Generate')
   })
 
   it('tests onBlur callback', () => {
