@@ -48,10 +48,10 @@ class InputPasswordGenerator extends PureComponent {
 
   handleGenerateOnClick () {
     const generatedPassword = generatePassword(
-      this.props.passwordCustomLength,
-      this.props.passwordNotMemorable,
-      this.props.passwordShouldMatchPattern,
-      this.props.passwordPrefix
+      this.props.password.customLength,
+      this.props.password.notMemorable,
+      this.props.password.shouldMatchPattern,
+      this.props.password.prefix
     )
 
     this.setState({
@@ -61,7 +61,7 @@ class InputPasswordGenerator extends PureComponent {
   }
 
   render () {
-    const { className, ...inputProps } = this.props
+    const { className, messages, password, ...inputProps } = this.props
     const classes = classNames('react-password-generator', {
       'react-password-generator--focus': this.state.hasFocus,
     }, className)
@@ -92,13 +92,15 @@ InputPasswordGenerator.displayName = 'InputPasswordGenerator'
 
 InputPasswordGenerator.defaultProps = {
   className: '',
-  passwordCustomLength: 10,
-  passwordNotMemorable: true,
-  passwordShouldMatchPattern: null,
-  passwordPrefix: null,
   messages: {
     inputPlaceholder: 'Password',
     generateButtonLabel: 'Generate',
+  },
+  password: {
+    customLength: 10,
+    notMemorable: true,
+    shouldMatchPattern: null,
+    prefix: null,
   },
 }
 
@@ -110,10 +112,12 @@ InputPasswordGenerator.propTypes = {
     inputPlaceholder: PropTypes.string,
     generateButtonLabel: PropTypes.string,
   }),
-  passwordCustomLength: PropTypes.number,
-  passwordNotMemorable: PropTypes.bool,
-  passwordShouldMatchPattern: PropTypes.string,
-  passwordPrefix: PropTypes.string,
+  password: PropTypes.shape({
+    customLength: PropTypes.number,
+    notMemorable: PropTypes.bool,
+    shouldMatchPattern: PropTypes.string,
+    prefix: PropTypes.string,
+  }),
 }
 
 export default InputPasswordGenerator
