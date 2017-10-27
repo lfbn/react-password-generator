@@ -22633,7 +22633,7 @@
 	    value: function handleGenerateOnClick() {
 	      var _this2 = this;
 	
-	      var generatedPassword = (0, _passwordGenerator2.default)(this.props.password.customLength, this.props.password.notMemorable, this.props.password.shouldMatchPattern, this.props.password.prefix);
+	      var generatedPassword = (0, _passwordGenerator2.default)(this.props.passwordRequirements.customLength, this.props.passwordRequirements.notMemorable, this.props.passwordRequirements.shouldMatchPattern, this.props.passwordRequirements.prefix);
 	
 	      this.setState({
 	        password: generatedPassword,
@@ -22650,8 +22650,8 @@
 	      var _props = this.props,
 	          className = _props.className,
 	          messages = _props.messages,
-	          password = _props.password,
-	          inputProps = _objectWithoutProperties(_props, ['className', 'messages', 'password']);
+	          passwordRequirements = _props.passwordRequirements,
+	          inputProps = _objectWithoutProperties(_props, ['className', 'messages', 'passwordRequirements']);
 	
 	      var classes = (0, _classnames2.default)('react-password-generator', {
 	        'react-password-generator--focus': this.state.hasFocus
@@ -22693,7 +22693,7 @@
 	    inputPlaceholder: 'Password',
 	    generateButtonLabel: 'Generate'
 	  },
-	  password: {
+	  passwordRequirements: {
 	    customLength: 10,
 	    notMemorable: true,
 	    shouldMatchPattern: null,
@@ -22709,7 +22709,7 @@
 	    inputPlaceholder: _propTypes2.default.string,
 	    generateButtonLabel: _propTypes2.default.string
 	  }),
-	  password: _propTypes2.default.shape({
+	  passwordRequirements: _propTypes2.default.shape({
 	    customLength: _propTypes2.default.number,
 	    notMemorable: _propTypes2.default.bool,
 	    shouldMatchPattern: _propTypes2.default.string,
