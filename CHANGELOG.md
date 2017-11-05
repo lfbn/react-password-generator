@@ -9,6 +9,11 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 ### Added
 - Add a second input to "confirm" the password.
 
+## [2.0.0] - 2017/11/05
+### Changed
+- Improve docs page with more examples.
+- Update password props configuration variables.
+
 ## [1.0.6] - 2017/10/28
 ### Changed
 - Fix unit tests notice because of password object.
