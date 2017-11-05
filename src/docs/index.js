@@ -1,9 +1,9 @@
 import React, { Component } from 'react'
 import { render } from 'react-dom'
 
-import InputPasswordGenerator from '../component'
+import PasswordWithGenerator from '../component'
 // In your code this would be:
-// import InputPasswordGenerator from 'react-input-password-generator'
+// import PasswordWithGenerator from 'react-input-password-generator'
 
 import '../../style.css'
 import './style.css'
@@ -17,36 +17,137 @@ class App extends Component {
 
     return (
       <form>
-        <h1>react-input-password-generator</h1>
-        <h2>Simple Example</h2>
+        <h1>react-password-with-generator</h1>
+
+        {/* Installation */}
+
         <div className='example'>
-          <InputPasswordGenerator />
+          <div>Installation</div>
+          <pre>
+            {`npm install react-password-with-generator --save`}
+          </pre>
+          <pre>{`import PasswordWithGenerator from 'react-password-with-generator'`}</pre>
+          <p>Or if you're not using the ES6 module format yet:</p>
+          <pre>{`var PasswordWithGenerator = require('react-password-with-generator')`}</pre>
         </div>
-        <hr />
-        <h2>Example with a custom length password</h2>
-        <div className='example'>
-          <InputPasswordGenerator password={{password: {'customLength': 15}}} />
+
+        {/* Default Options */}
+
+        <h2>Example with Default options</h2>
+        <div>
+          <PasswordWithGenerator />
         </div>
+
+        <pre>
+          {`<div>
+  <PasswordWithGenerator />
+</div>`}
+        </pre>
+
         <hr />
+
+        {/* Custom Class */}
+
+        <h2>Example with a Custom Class</h2>
+        <div>
+          <PasswordWithGenerator className={'react-password-generator__on-focus-glow'} />
+        </div>
+
+        <pre>
+          {`<div>
+  <PasswordWithGenerator className={'react-password-generator__on-focus-glow'} />
+</div>`}
+        </pre>
+
+        <hr />
+
+        {/* Custom Length */}
+
+        <h2>Example with a custom length password. Size of 20 characters.</h2>
+        <div>
+          <PasswordWithGenerator passwordCustomLength={20} />
+        </div>
+
+        <pre>
+          {`<div>
+  <PasswordWithGenerator passwordCustomLength={20} />
+</div>`}
+        </pre>
+
+        <hr />
+
+        {/* Not Memorable */}
+
         <h2>Example with a not memorable password</h2>
-        <div className='example'>
-          <InputPasswordGenerator password={{password: {'notMemorable': false}}} />
+        <div>
+          <PasswordWithGenerator passwordNotMemorable={false} />
         </div>
+
+        <pre>
+          {`<div>
+  <PasswordWithGenerator passwordNotMemorable={false} />
+</div>`}
+        </pre>
+
+        {/* Should Match Pattern */}
+
+        <h2>Example with should match pattern</h2>
+        <div>
+          <PasswordWithGenerator passwordShouldMatchPattern={/\d/} />
+        </div>
+
+        <pre>
+          {`<div>
+  <PasswordWithGenerator passwordShouldMatchPattern={/d/} />
+</div>`}
+        </pre>
+
         <hr />
-        <h2>Example with a custom Class Name</h2>
-        <div className='example'>
-          <InputPasswordGenerator className={'red'} />
+
+        {/* Prefix */}
+
+        <h2>Example with prefix</h2>
+        <div>
+          <PasswordWithGenerator passwordPrefix={'test'} />
         </div>
+
+        <pre>
+          {`<div>
+  <PasswordWithGenerator passwordPrefix={'test'} />
+</div>`}
+        </pre>
+
         <hr />
-        <h2>Example with a custom Class Name</h2>
-        <div className='example'>
-          <InputPasswordGenerator className={'red'} />
+
+        {/* On focus */}
+
+        <h2>Example with a on focus callback</h2>
+        <div>
+          <PasswordWithGenerator onFocus={function () { console.log('on focus!') }} />
         </div>
+
+        <pre>
+          {`<div>
+  <PasswordWithGenerator onFocus={function () { console.log('on focus!') }} />
+</div>`}
+        </pre>
+
         <hr />
-        <h2>Example with a custom button label or input placeholder</h2>
-        <div className='example'>
-          <InputPasswordGenerator messages />
+
+        {/* On blur */}
+
+        <h2>Example with a on blur callback</h2>
+        <div>
+          <PasswordWithGenerator onBlur={function () { console.log('on blur!') }} />
         </div>
+
+        <pre>
+          {`<div>
+  <PasswordWithGenerator onBlur={function () { console.log('on blur!') }} />
+</div>`}
+        </pre>
+
+        <hr />
       </form>
     )
   }

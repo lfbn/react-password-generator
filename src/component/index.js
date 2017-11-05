@@ -47,11 +47,16 @@ class InputPasswordGenerator extends PureComponent {
   }
 
   handleGenerateOnClick () {
+    let passwordNotMemorable = this.props.passwordNotMemorable
+    if (this.props.passwordShouldMatchPattern !== null ||
+        this.props.passwordShouldMatchPattern !== '') {
+      passwordNotMemorable = false
+    }
     const generatedPassword = generatePassword(
-      this.props.passwordRequirements.customLength,
-      this.props.passwordRequirements.notMemorable,
-      this.props.passwordRequirements.shouldMatchPattern,
-      this.props.passwordRequirements.prefix
+      this.props.passwordCustomLength,
+      passwordNotMemorable,
+      this.props.passwordShouldMatchPattern,
+      this.props.passwordPrefix,
     )
 
     this.setState({
@@ -64,7 +69,10 @@ class InputPasswordGenerator extends PureComponent {
     const {
       className,
       messages,
-      passwordRequirements,
+      passwordCustomLength,
+      passwordNotMemorable,
+      passwordShouldMatchPattern,
+      passwordPrefix,
       ...inputProps
     } = this.props
     const classes = classNames('react-password-generator', {
@@ -101,28 +109,24 @@ InputPasswordGenerator.defaultProps = {
     inputPlaceholder: 'Password',
     generateButtonLabel: 'Generate',
   },
-  passwordRequirements: {
-    customLength: 10,
-    notMemorable: true,
-    shouldMatchPattern: null,
-    prefix: null,
-  },
+  passwordCustomLength: 10,
+  passwordNotMemorable: true,
+  passwordShouldMatchPattern: null,
+  passwordPrefix: null,
 }
 
 InputPasswordGenerator.propTypes = {
-  onFocus: PropTypes.func,
-  onBlur: PropTypes.func,
   className: PropTypes.string,
   messages: PropTypes.shape({
     inputPlaceholder: PropTypes.string,
     generateButtonLabel: PropTypes.string,
   }),
-  passwordRequirements: PropTypes.shape({
-    customLength: PropTypes.number,
-    notMemorable: PropTypes.bool,
-    shouldMatchPattern: PropTypes.string,
-    prefix: PropTypes.string,
-  }),
+  passwordCustomLength: PropTypes.number,
+  passwordNotMemorable: PropTypes.bool,
+  passwordShouldMatchPattern: PropTypes.instanceOf(RegExp),
+  passwordPrefix: PropTypes.string,
+  onFocus: PropTypes.func,
+  onBlur: PropTypes.func,
 }
 
 export default InputPasswordGenerator

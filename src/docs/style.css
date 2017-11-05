@@ -1,3 +1,15 @@
-.red {
-  background-color: red;
+.react-password-generator__input {
+  width: 200px;
+  margin-right: 10px;
+}
+
+.react-password-generator__on-focus-glow .react-password-generator__input {
+  border: solid 1px #dcdcdc;
+  transition: box-shadow 0.3s, border 0.3s;
+}
+
+.react-password-generator__on-focus-glow .react-password-generator__input:focus {
+  background-color: #cccccc;
+  border: solid 1px #707070;
+  box-shadow: 0 0 5px 1px #969696;
 }
